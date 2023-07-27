@@ -1,5 +1,5 @@
 # CPW219-eCommerceSite
-## An on-going project using .NET and Bootstrap
+This was written as part of a .NET Web course to learn more about Source Control and Bootstrap
 ### Requirements
 - Visual Studio 2022
 - .NET 6
