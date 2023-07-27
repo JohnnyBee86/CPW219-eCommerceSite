@@ -14,3 +14,6 @@ This was written as part of a .NET Web course to learn more about Source Control
 - 3 Bootstrap components of my choice (Accordion, Carousel, and a Card)
 
   ![wk3 eCommerce home page](https://github.com/JohnnyBee86/CPW219-eCommerceSite/assets/130700641/79af7f63-6375-4872-a7be-6940d858d100)
+
+### Added on 7/27
+- Began work on "Game" database
