@@ -1,5 +1,13 @@
 # CPW219-eCommerceSite
 ## An on-going project using .NET and Bootstrap
+### Requirements
+- Visual Studio 2022
+- .NET 6
+
+### Useful Links
+- [Get started with Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/get-started/overview/install)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Get Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
 
 ### Added on 7/20
 - Basic Home Page layout
