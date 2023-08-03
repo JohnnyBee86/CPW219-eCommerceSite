@@ -20,13 +20,13 @@ namespace CPW219_eCommerceSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Game newGame)
+        public async Task<IActionResult> Create(Game newGame)
         {
             if (ModelState.IsValid)
             {
                 // add to db
-                _context.Games.Add(newGame); // prepares insert
-                _context.SaveChanges(); // executes pending insert
+                _context.Games.Add(newGame);        // prepares insert
+                await _context.SaveChangesAsync();  // executes pending insert
 
                 // show success message on page
                 ViewData["Message"] = $"{newGame.Title} was added successfully!";
