@@ -11,9 +11,9 @@ namespace CPW219_eCommerceSite.Models
 
         public string Password { get; set; } = null!;
 
-        public string Phone { get; set; } = null!;
+        public string? Phone { get; set; } // ? makes them optional in the DB
 
-        public string Username { get; set; } = null!;
+        public string? Username { get; set; } // ? makes them optional in the DB
     }
 
     public class RegisterViewModel
