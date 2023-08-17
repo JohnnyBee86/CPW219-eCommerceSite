@@ -7,12 +7,34 @@ namespace CPW219_eCommerceSite.Models
         [Key]
         public int MemberId { get; set; }
 
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
 
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
 
-        public string Phone { get; set; }
+        public string Phone { get; set; } = null!;
 
-        public string Username { get; set; }
+        public string Username { get; set; } = null!;
+    }
+
+    public class RegisterViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [StringLength(100)]
+        public string Email { get; set; } = null!;
+
+        [Required]
+        [Compare(nameof(Email))]
+        [Display(Name = "Confirm Email")]
+        public string ConfirmEmail { get; set; } = null!;
+
+        [Required]
+        [StringLength(75, MinimumLength = 6)]
+        public string Password { get; set; } = null!;
+
+        [Required]
+        [Compare(nameof(Password))]
+        [Display(Name = "Confirm Password")]
+        public string ConfirmPassword { get; set; } = null!;
     }
 }
