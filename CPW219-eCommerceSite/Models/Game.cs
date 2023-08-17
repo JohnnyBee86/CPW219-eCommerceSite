@@ -17,13 +17,13 @@ namespace CPW219_eCommerceSite.Models
         /// The title of the campaign
         /// </summary>
         [Required]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         /// <summary>
         /// The genre of the setting (fantasy, sci-fi,...)
         /// </summary>
         [Required]
-        public string Setting { get; set; }
+        public string Setting { get; set; } = null!;
 
         /// <summary>
         /// How many players will be in the game
