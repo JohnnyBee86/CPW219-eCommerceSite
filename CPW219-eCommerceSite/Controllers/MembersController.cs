@@ -35,6 +35,9 @@ namespace CPW219_eCommerceSite.Controllers
                 _context.Add(newMember);
                 await _context.SaveChangesAsync();
 
+                // log them in
+                LogUserIn(newMember.Email);
+
                 // Redirect to homepage
                 return RedirectToAction("Index", "Home");
             }
@@ -60,15 +63,26 @@ namespace CPW219_eCommerceSite.Controllers
 
                 // if exists send to homepage
                 if (m != null)
-                {
-                    HttpContext.Session.SetString("Email", loginModel.Email);
-                    return RedirectToAction("Index", "Home");
-                }
+				{
+					LogUserIn(loginModel.Email);
+					return RedirectToAction("Index", "Home");
+				}
 
-                ModelState.AddModelError(string.Empty, "Credentials not found!");
+				ModelState.AddModelError(string.Empty, "Credentials not found!");
             }
             // if no record matches or model state is invalid, display error
             return View(loginModel);
+        }
+
+		private void LogUserIn(string email)
+		{
+			HttpContext.Session.SetString("Email", email);
+		}
+
+		public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
