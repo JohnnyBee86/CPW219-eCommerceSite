@@ -4,6 +4,9 @@ using System.Diagnostics;
 
 namespace CPW219_eCommerceSite.Controllers
 {
+    /// <summary>
+    /// The controller for all 'Home' views
+    /// </summary>
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

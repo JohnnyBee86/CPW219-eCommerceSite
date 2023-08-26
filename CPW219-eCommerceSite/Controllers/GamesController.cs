@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace CPW219_eCommerceSite.Controllers
 {
+    /// <summary>
+    /// The controller for all 'Games' views
+    /// </summary>
     public class GamesController : Controller
     {
         private readonly GameContext _context;

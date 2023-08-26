@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CPW219_eCommerceSite.Data
 {
+    /// <summary>
+    /// The context for the Games database
+    /// </summary>
     public class GameContext : DbContext
     {
         public GameContext(DbContextOptions<GameContext> options) : base(options) 
