@@ -15,19 +15,55 @@ namespace CPW219_eCommerceSite.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
+            // 'page' size
+            const int NumGamesToDisplayPerPage = 3;
+            // 'page' offset to keep from skipping first page
+            const int PageOffset = 1;
+
+            int currPage = id ?? 1; // set current page to id if it has a value, else use 1
+            /* above is conditional operation for:
+             * if (id.HasValue)
+             * {
+             *  currPage = id.Value;
+             * }
+             * else
+             * {
+             *  currPage = 1;
+             * }
+             */
+
+            // get total number of games in the database
+            int totalNumOfGames = await _context.Games.CountAsync();
+            // find max number of pages
+            double maxNumPages = Math.Ceiling((double)totalNumOfGames / NumGamesToDisplayPerPage);
+            // round up to an int
+            int lastPage = Convert.ToInt32(maxNumPages);
+
             // get all games from db
-            // method syntax
-            List<Game> games = await _context.Games.ToListAsync();
+            // method syntax with pagination logic
+            List<Game> games = await 
+                       _context.Games
+                       .Skip(NumGamesToDisplayPerPage * (currPage - PageOffset))
+                       .Take(NumGamesToDisplayPerPage)
+                       .ToListAsync();
+
+
+            // query syntax with pagination logic
             /*
-             * query syntax
-            List<Game> games = (from game in _context.Games
-                                select game).ToList();
+             * List<Game> games = (from game in _context.Games
+             *                   select game)
+             *                   .Skip(NumGamesToDisplayPerPage * (currPage - PageOffset))
+             *                   .Take(NumGamesToDisplayPerPage)
+             *                   .ToList();
             */
 
+            // create catalog view model
+            GameCatalogViewModel catalogModel = new(games, lastPage, currPage);
+
             // show them on the page
-            return View(games);
+            return View(catalogModel);
         }
 
         [HttpGet]
