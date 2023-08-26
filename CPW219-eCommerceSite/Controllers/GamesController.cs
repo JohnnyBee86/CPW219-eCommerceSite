@@ -34,6 +34,13 @@ namespace CPW219_eCommerceSite.Controllers
              * }
              */
 
+            // get total number of games in the database
+            int totalNumOfGames = await _context.Games.CountAsync();
+            // find max number of pages
+            double maxNumPages = Math.Ceiling((double)totalNumOfGames / NumGamesToDisplayPerPage);
+            // round up to an int
+            int lastPage = Convert.ToInt32(maxNumPages);
+
             // get all games from db
             // method syntax with pagination logic
             List<Game> games = await 
@@ -52,8 +59,11 @@ namespace CPW219_eCommerceSite.Controllers
              *                   .ToList();
             */
 
+            // create catalog view model
+            GameCatalogViewModel catalogModel = new(games, lastPage, currPage);
+
             // show them on the page
-            return View(games);
+            return View(catalogModel);
         }
 
         [HttpGet]
