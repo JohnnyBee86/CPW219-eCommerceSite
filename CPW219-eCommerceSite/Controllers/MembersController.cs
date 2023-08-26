@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CPW219_eCommerceSite.Controllers
 {
+    /// <summary>
+    /// The controller for all 'Members' views
+    /// </summary>
     public class MembersController : Controller
     {
         private readonly GameContext _context;
